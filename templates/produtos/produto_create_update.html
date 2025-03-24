@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block conteudo %}
+<div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1> Cadrasto/Atualização de produtos</h1>
+    </div>
+    <div class="card shadow mp-4">
+        <div class="card-body py-3">
+            <h4>Formulário para registro de novos Produtos</h4>
+        </div>
+    </div>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <!--{{ form.as_p }}-->
+        {% for field in form%}
+        <label>{{field.label}} {%if field.field.required%} * {%endif%}</label>
+        {% render_field field class="form-control" %}
+        {% endfor%}
+        <input type="submit" class="btn btn-primary w-100" />
+    </form>
+</div>
+<!-- Incluindo o JS do Bootstrap (para funcionalidades como modal, dropdowns, etc) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock conteudo %}
